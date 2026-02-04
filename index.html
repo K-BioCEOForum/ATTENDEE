@@ -22,6 +22,8 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
+            min-height: 100px;
+            width: 100%;
         }
         
         .attendee-card::before {
@@ -157,9 +159,9 @@
     <div id="app-wrapper" class="w-full min-h-full pb-20">
         <nav class="w-full px-6 py-8 flex justify-between items-center max-w-6xl mx-auto">
             <div class="flex items-center">
-                <img src="https://www.genspark.ai/api/files/s/gCSr6VoX" alt="Korea Biotech CEO Forum 2026" class="forum-logo">
+                <img src="images/logo.png" alt="Korea Biotech CEO Forum 2026" class="forum-logo">
             </div>
-            <a href="http://koreabiotechceoforum.com/" class="home-icon" title="홈으로 돌아가기">
+            <a href="http://koreabiotechceoforum.com/" class="home-icon" title="홈으로 돌아가기" style="display: block; -webkit-tap-highlight-color: rgba(0,0,0,0);">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
@@ -192,7 +194,7 @@
 
             <div id="list-container" class="list-container">
                 <div class="rounded-3xl p-6 md:p-10 border mb-12" style="border-color: #e5e7eb; background: #FAFAFA;">
-                    <div id="attendee-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div id="attendee-grid" class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
                     </div>
                 </div>
             </div>
@@ -284,17 +286,19 @@
                 const accentClass = `card-accent-${(index % 4) + 1}`;
                 
                 return `
-                <div class="attendee-card ${accentClass} rounded-2xl p-5 flex items-center gap-4">
-                    <div class="w-11 h-11 rounded-xl flex items-center justify-center text-sm font-black flex-shrink-0 border" style="background: ${colorScheme.bg}; color: ${colorScheme.color}; border-color: ${colorScheme.border};">
-                        ${String(index + 1).padStart(2, '0')}
+                <div class="attendee-card ${accentClass} rounded-2xl p-4 flex flex-col gap-3" style="min-height: 120px;">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-black flex-shrink-0 border" style="background: ${colorScheme.bg}; color: ${colorScheme.color}; border-color: ${colorScheme.border};">
+                            ${String(index + 1).padStart(2, '0')}
+                        </div>
+                        <div class="flex-1 min-w-0">
+                            <div class="font-bold text-sm leading-tight mb-1" style="color: #1f2937;">${attendee.company}</div>
+                            <div class="text-[10px] font-medium uppercase tracking-wider" style="color: #9ca3af; line-height: 1.2;">${attendee.companyEn}</div>
+                        </div>
                     </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="font-bold text-base truncate" style="color: #1f2937;">${attendee.company}</div>
-                        <div class="text-[10px] font-medium uppercase tracking-wider truncate" style="color: #9ca3af;">${attendee.companyEn}</div>
-                    </div>
-                    <div class="text-right flex-shrink-0 ml-2">
-                        <div class="font-semibold" style="color: ${colorScheme.color};">${attendee.name}</div>
-                        <div class="text-[10px]" style="color: #9ca3af;">${attendee.title}</div>
+                    <div class="flex justify-between items-end pt-2 border-t" style="border-color: ${colorScheme.border};">
+                        <div class="font-bold text-base" style="color: ${colorScheme.color};">${attendee.name}</div>
+                        <div class="text-[11px] font-medium" style="color: #6b7280;">${attendee.title}</div>
                     </div>
                 </div>
             `;

@@ -88,6 +88,8 @@ Korea Biotech CEO Forum 2026의 공식 참석자 명단을 확인할 수 있는 
 ## 파일 구조
 ```
 ├── index.html          # 메인 페이지 (참석자 명단)
+├── images/
+│   └── logo.png       # Korea Biotech CEO Forum 로고
 └── README.md          # 프로젝트 문서
 ```
 
@@ -97,7 +99,7 @@ Korea Biotech CEO Forum 2026의 공식 참석자 명단을 확인할 수 있는 
 - `/` 또는 `/index.html` - 참석자 명단 페이지
 
 ### 외부 링크
-- **홈페이지**: https://k-bioceoforum.github.io/HOME/
+- **홈페이지**: http://koreabiotechceoforum.com/
   - 네비게이션 바의 "홈으로 돌아가기" 버튼으로 연결
 
 ### JavaScript 함수
