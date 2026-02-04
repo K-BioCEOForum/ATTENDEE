@@ -41,6 +41,7 @@
             transform: translateY(-3px);
             background: #ffffff;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
         }
         
         .card-accent-1::before { background: #5A9E8E; }
@@ -166,7 +167,7 @@
             <div class="flex items-center">
                 <img src="images/logo.png" alt="Korea Biotech CEO Forum 2026" class="forum-logo">
             </div>
-            <a href="http://koreabiotechceoforum.com"class="home-icon" title="홈으로 돌아가기">
+            <a href="https://k-bioceoforum.github.io/HOME/" class="home-icon" title="홈으로 돌아가기">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
@@ -217,40 +218,40 @@
 
     <script>
         const attendees = [
-            { company: "갤럭스", companyEn: "Galux", name: "석차옥", title: "대표/CEO" },
-            { company: "미라보바이오", companyEn: "Mirabo Biotechnology", name: "이경호", title: "대표/CEO" },
-            { company: "바이오케스트라", companyEn: "BIORCHESTRA", name: "류진협", title: "대표/CEO" },
-            { company: "삼성바이오로직스", companyEn: "Samsung Biologics", name: "존림", title: "대표/CEO" },
-            { company: "세노스테라퓨틱스", companyEn: "Cenos Therapeutics", name: "June Park", title: "대표/CEO" },
-            { company: "셀리아즈", companyEn: "Celliaz", name: "강경화", title: "대표/CEO" },
-            { company: "쓰리브룩스Tx", companyEn: "ThreeBrooks", name: "김성영", title: "대표/CEO" },
-            { company: "쓰리빌리언", companyEn: "3billion", name: "금창원", title: "대표/CEO" },
-            { company: "아델", companyEn: "ADEL", name: "윤승용", title: "대표/CEO" },
-            { company: "알지노믹스", companyEn: "Rznomics", name: "이성욱", title: "대표/CEO" },
-            { company: "애스톤사이언스", companyEn: "Aston Science", name: "정헌", title: "대표/CEO" },
-            { company: "에스케이바이오팜", companyEn: "SK Biopharmaceuticals", name: "이동훈", title: "대표/CEO" },
-            { company: "에스케이바이오팜", companyEn: "SK Biopharmaceuticals", name: "최윤정", title: "본부장" },
-            { company: "에임드바이오", companyEn: "AIMEDBIO", name: "허남구", title: "대표/CEO" },
-            { company: "오름테라퓨틱", companyEn: "Orum Therapeutic", name: "이승주", title: "대표/CEO" },
-            { company: "오스코텍", companyEn: "Oscotec", name: "윤태영", title: "대표/CEO" },
-            { company: "올릭스파마", companyEn: "OliX Pharmaceuticals", name: "이동기", title: "대표/CEO" },
-            { company: "유한양행", companyEn: "Yuhan Corporation", name: "최영기", title: "연구소장" },
-            { company: "이노크라스", companyEn: "Inocras", name: "이정석", title: "대표/CEO" },
-            { company: "인벤티지랩", companyEn: "Inventage Lab", name: "김주희", title: "대표/CEO" },
-            { company: "인제니아", companyEn: "Ingenia Therapeutics", name: "한상열", title: "대표/CEO" },
-            { company: "일리미스 Tx", companyEn: "Illimis Therapeutics", name: "박상훈", title: "대표/CEO" },
-            { company: "임프리메드", companyEn: "ImpriMed", name: "임성원", title: "대표/CEO" },
-            { company: "지놈앤컴퍼니", companyEn: "Genome & Company", name: "홍유석", title: "대표/CEO" },
-            { company: "지피씨알", companyEn: "GPCR Therapeutics", name: "신동승", title: "대표/CEO" },
-            { company: "진에딧", companyEn: "GenEdit", name: "이근우", title: "대표/CEO" },
-            { company: "큐로셀", companyEn: "Curocell", name: "김건수", title: "대표/CEO" },
-            { company: "트리오어", companyEn: "TriOar", name: "우성호", title: "대표/CEO" },
-            { company: "티씨노바이오사이언스", companyEn: "Txinno Bioscience", name: "박찬선", title: "대표/CEO" },
-            { company: "파인트리", companyEn: "Pinetree Therapeutics", name: "송호준", title: "대표/CEO" },
-            { company: "퍼스트바이오", companyEn: "1ST Biotherapeutics", name: "김재은", title: "대표/CEO" },
-            { company: "프레이져", companyEn: "Frazier Healthcare Partners", name: "인경수", title: "대표/CEO" },
-            { company: "프로티나", companyEn: "PROTEINA", name: "윤태영", title: "대표/CEO" },
-            { company: "플래그십 파이오니어링", companyEn: "Flagship pioneering", name: "이병건", title: "특별고문" }
+            { company: "갤럭스", companyEn: "Galux", name: "석차옥", title: "대표/CEO", website: "https://galux.co.kr" },
+            { company: "미라보바이오", companyEn: "Mirabo Biotechnology", name: "이경호", title: "대표/CEO", website: "https://mirabobio.com" },
+            { company: "바이오케스트라", companyEn: "BIORCHESTRA", name: "류진협", title: "대표/CEO", website: "https://biorchestra.com" },
+            { company: "삼성바이오로직스", companyEn: "Samsung Biologics", name: "존림", title: "대표/CEO", website: "https://www.samsungbiologics.com" },
+            { company: "세노스테라퓨틱스", companyEn: "Cenos Therapeutics", name: "June Park", title: "대표/CEO", website: "https://cenostx.com/" },
+            { company: "셀리아즈", companyEn: "Celliaz", name: "강경화", title: "대표/CEO", website: "https://www.celliaz.com" },
+            { company: "쓰리브룩스Tx", companyEn: "ThreeBrooks", name: "김성영", title: "대표/CEO", website: "http://www.threebrooks.net/" },
+            { company: "쓰리빌리언", companyEn: "3billion", name: "금창원", title: "대표/CEO", website: "https://3billion.io" },
+            { company: "아델", companyEn: "ADEL", name: "윤승용", title: "대표/CEO", website: "https://adelpharm.com/" },
+            { company: "알지노믹스", companyEn: "Rznomics", name: "이성욱", title: "대표/CEO", website: "https://rznomics.com" },
+            { company: "애스톤사이언스", companyEn: "Aston Science", name: "정헌", title: "대표/CEO", website: "http://astonsci.com/" },
+            { company: "에스케이바이오팜", companyEn: "SK Biopharmaceuticals", name: "이동훈", title: "대표/CEO", website: "https://www.skbp.com" },
+            { company: "에스케이바이오팜", companyEn: "SK Biopharmaceuticals", name: "최윤정", title: "본부장", website: "https://www.skbp.com" },
+            { company: "에임드바이오", companyEn: "AIMEDBIO", name: "허남구", title: "대표/CEO", website: "https://www.aimedbio.com" },
+            { company: "오름테라퓨틱", companyEn: "Orum Therapeutic", name: "이승주", title: "대표/CEO", website: "https://www.orumtx.com" },
+            { company: "오스코텍", companyEn: "Oscotec", name: "윤태영", title: "대표/CEO", website: "https://www.oscotec.com" },
+            { company: "올릭스파마", companyEn: "OliX Pharmaceuticals", name: "이동기", title: "대표/CEO", website: "https://www.olixpharma.com" },
+            { company: "유한양행", companyEn: "Yuhan Corporation", name: "최영기", title: "연구소장", website: "https://www.yuhan.co.kr" },
+            { company: "이노크라스", companyEn: "Inocras", name: "이정석", title: "대표/CEO", website: "https://www.inocras.com" },
+            { company: "인벤티지랩", companyEn: "Inventage Lab", name: "김주희", title: "대표/CEO", website: "https://www.inventagelab.com" },
+            { company: "인제니아", companyEn: "Ingenia Therapeutics", name: "한상열", title: "대표/CEO", website: "https://www.ingeniatx.com" },
+            { company: "일리미스 Tx", companyEn: "Illimis Therapeutics", name: "박상훈", title: "대표/CEO", website: "https://www.illimistx.com" },
+            { company: "임프리메드", companyEn: "ImpriMed", name: "임성원", title: "대표/CEO", website: "https://www.imprimedicine.com/korea/kr" },
+            { company: "지놈앤컴퍼니", companyEn: "Genome & Company", name: "홍유석", title: "대표/CEO", website: "http://genomecom.co.kr/" },
+            { company: "지피씨알", companyEn: "GPCR Therapeutics", name: "신동승", title: "대표/CEO", website: "http://gpcr.co.kr/" },
+            { company: "진에딧", companyEn: "GenEdit", name: "이근우", title: "대표/CEO", website: "https://www.genedit.com" },
+            { company: "큐로셀", companyEn: "Curocell", name: "김건수", title: "대표/CEO", website: "https://curocellbtx.com/" },
+            { company: "트리오어", companyEn: "TriOar", name: "우성호", title: "대표/CEO", website: "https://trioar.co.kr/" },
+            { company: "티씨노바이오사이언스", companyEn: "Txinno Bioscience", name: "박찬선", title: "대표/CEO", website: "https://www.txinno.com" },
+            { company: "파인트리", companyEn: "Pinetree Therapeutics", name: "송호준", title: "대표/CEO", website: "https://www.pinetreetx.com" },
+            { company: "퍼스트바이오", companyEn: "1ST Biotherapeutics", name: "김재은", title: "대표/CEO", website: "https://www.1stbio.com/" },
+            { company: "프레이져", companyEn: "Frazier Healthcare Partners", name: "인경수", title: "대표/CEO", website: "https://www.frazierhealthcare.com" },
+            { company: "프로티나", companyEn: "PROTEINA", name: "윤태영", title: "대표/CEO", website: "https://www.proteina.co.kr" },
+            { company: "플래그십 파이오니어링", companyEn: "Flagship pioneering", name: "이병건", title: "특별고문", website: "https://www.flagshippioneering.com" }
         ];
 
         let isListVisible = false;
@@ -292,7 +293,7 @@
                 const accentClass = `card-accent-${(index % 4) + 1}`;
                 
                 return `
-                <div class="attendee-card ${accentClass} rounded-2xl p-5 flex items-center gap-4">
+                <a href="${attendee.website}" target="_blank" rel="noopener noreferrer" class="attendee-card ${accentClass} rounded-2xl p-5 flex items-center gap-4 no-underline">
                     <div class="w-11 h-11 rounded-xl flex items-center justify-center text-sm font-black flex-shrink-0 border" style="background: ${colorScheme.bg}; color: ${colorScheme.color}; border-color: ${colorScheme.border};">
                         ${String(index + 1).padStart(2, '0')}
                     </div>
@@ -304,7 +305,10 @@
                         <div class="font-semibold" style="color: ${colorScheme.color};">${attendee.name}</div>
                         <div class="text-[10px]" style="color: #9ca3af;">${attendee.title}</div>
                     </div>
-                </div>
+                    <svg class="w-5 h-5 flex-shrink-0 opacity-50" style="color: ${colorScheme.color};" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                    </svg>
+                </a>
             `;
             }).join('');
         }
