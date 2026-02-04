@@ -10,11 +10,14 @@
         body {
             box-sizing: border-box;
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+            /* 밝은 그레이 배경 */
             background: #F8F9FA;
             position: relative;
         }
         
-        /* 참석자 카드 스타일 */
+
+        
+        /* 참석자 카드 스타일 - 밝고 깨끗한 색상 */
         .attendee-card {
             transition: all 0.3s ease;
             background: #ffffff;
@@ -22,8 +25,6 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
             position: relative;
             overflow: hidden;
-            min-height: 100px;
-            width: 100%;
         }
         
         .attendee-card::before {
@@ -93,12 +94,12 @@
             }
         }
         
-        /* 홈 아이콘 스타일 */
+        /* 홈 아이콘 스타일 - 심플 벡터 */
         .home-icon {
-            display: inline-block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
-            cursor: pointer;
-            padding: 8px;
         }
         
         .home-icon svg {
@@ -122,7 +123,7 @@
             filter: drop-shadow(0 4px 6px rgba(90, 158, 142, 0.3));
         }
         
-        /* 제목 스타일 */
+        /* 제목 스타일 - 단색 입체감 */
         .main-title {
             color: #0F6B7E;
             text-shadow: 
@@ -131,27 +132,31 @@
                 3px 3px 6px rgba(0, 0, 0, 0.08);
         }
         
-        /* 버튼 스타일 */
+        /* 세련된 버튼 스타일 */
         .reveal-button {
+            position: relative;
             background: linear-gradient(135deg, #5A9E8E 0%, #8FD14F 100%);
             border: none;
-            cursor: pointer;
-            display: inline-block;
+            overflow: hidden;
         }
         
-        .reveal-button:active {
-            transform: scale(0.98);
+        .reveal-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .reveal-button:hover::before {
+            left: 100%;
         }
         
         .reveal-button:hover {
             box-shadow: 0 12px 28px rgba(90, 158, 142, 0.4) !important;
-        }
-        
-        @media (max-width: 768px) {
-            .reveal-button {
-                padding: 1rem 2rem !important;
-                font-size: 0.95rem !important;
-            }
         }
     </style>
 </head>
@@ -161,7 +166,7 @@
             <div class="flex items-center">
                 <img src="images/logo.png" alt="Korea Biotech CEO Forum 2026" class="forum-logo">
             </div>
-            <a href="http://koreabiotechceoforum.com/" class="home-icon" title="홈으로 돌아가기" style="display: block; -webkit-tap-highlight-color: rgba(0,0,0,0);">
+            <a href="https://k-bioceoforum.github.io/HOME/" class="home-icon" title="홈으로 돌아가기">
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
                 </svg>
@@ -184,18 +189,23 @@
             </div>
 
             <div class="flex justify-center mb-16">
-                <button id="reveal-btn" class="reveal-button px-10 py-4 rounded-full font-semibold text-lg text-white" style="box-shadow: 0 4px 14px rgba(90, 158, 142, 0.3);">
-                    <span class="flex items-center gap-3">
+                <button id="reveal-btn" onclick="toggleList()" class="reveal-button group relative px-14 py-4 rounded-full font-semibold text-lg transition-all duration-500 text-white" style="box-shadow: 0 4px 14px rgba(90, 158, 142, 0.3);">
+                    <span id="btn-text" class="relative z-10 flex items-center gap-3">
                         명단 상세 확인하기
                         <svg id="btn-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </button>
+            </div>
+                        <svg id="btn-icon" class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </span>
                 </button>
             </div>
 
             <div id="list-container" class="list-container">
                 <div class="rounded-3xl p-6 md:p-10 border mb-12" style="border-color: #e5e7eb; background: #FAFAFA;">
-                    <div id="attendee-grid" class="grid gap-4" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));">
-                    </div>
+
+                    <div id="attendee-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        </div>
                 </div>
             </div>
 
@@ -245,39 +255,35 @@
 
         let isListVisible = false;
 
-        // 명단 토글 함수
         function toggleList() {
             const container = document.getElementById('list-container');
             const btnIcon = document.getElementById('btn-icon');
-            
-            if (!container || !btnIcon) return;
+            const btnText = document.getElementById('btn-text');
             
             isListVisible = !isListVisible;
             
             if (isListVisible) {
                 container.classList.add('show');
                 btnIcon.style.transform = 'rotate(180deg)';
+                // btnText.innerHTML = '닫기 <svg id="btn-icon" class="w-5 h-5 transition-transform duration-300" style="transform:rotate(180deg)" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>';
                 
-                setTimeout(() => {
-                    const cards = container.querySelectorAll('.attendee-card');
-                    cards.forEach((card, index) => {
-                        card.style.animationDelay = `${index * 0.04}s`;
-                        card.classList.add('animate-item');
-                    });
-                }, 100);
+                const cards = container.querySelectorAll('.attendee-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.04}s`;
+                    card.classList.add('animate-item');
+                });
             } else {
                 container.classList.remove('show');
                 btnIcon.style.transform = 'rotate(0deg)';
             }
         }
 
-        // 참석자 렌더링
         function renderAttendees() {
             const colors = [
-                { bg: 'rgba(90, 158, 142, 0.12)', color: '#5A9E8E', border: 'rgba(90, 158, 142, 0.25)' },
-                { bg: 'rgba(143, 209, 79, 0.12)', color: '#8FD14F', border: 'rgba(143, 209, 79, 0.25)' },
-                { bg: 'rgba(244, 196, 48, 0.12)', color: '#F4C430', border: 'rgba(244, 196, 48, 0.25)' },
-                { bg: 'rgba(79, 135, 247, 0.12)', color: '#4F87F7', border: 'rgba(79, 135, 247, 0.25)' }
+                { bg: 'rgba(90, 158, 142, 0.12)', color: '#5A9E8E', border: 'rgba(90, 158, 142, 0.25)' },      // 민트 그린
+                { bg: 'rgba(143, 209, 79, 0.12)', color: '#8FD14F', border: 'rgba(143, 209, 79, 0.25)' },     // 연두색
+                { bg: 'rgba(244, 196, 48, 0.12)', color: '#F4C430', border: 'rgba(244, 196, 48, 0.25)' },     // 노란색
+                { bg: 'rgba(79, 135, 247, 0.12)', color: '#4F87F7', border: 'rgba(79, 135, 247, 0.25)' }      // 파란색
             ];
             
             const grid = document.getElementById('attendee-grid');
@@ -286,34 +292,24 @@
                 const accentClass = `card-accent-${(index % 4) + 1}`;
                 
                 return `
-                <div class="attendee-card ${accentClass} rounded-2xl p-4 flex flex-col gap-3" style="min-height: 120px;">
-                    <div class="flex items-center gap-3">
-                        <div class="w-12 h-12 rounded-xl flex items-center justify-center text-sm font-black flex-shrink-0 border" style="background: ${colorScheme.bg}; color: ${colorScheme.color}; border-color: ${colorScheme.border};">
-                            ${String(index + 1).padStart(2, '0')}
-                        </div>
-                        <div class="flex-1 min-w-0">
-                            <div class="font-bold text-sm leading-tight mb-1" style="color: #1f2937;">${attendee.company}</div>
-                            <div class="text-[10px] font-medium uppercase tracking-wider" style="color: #9ca3af; line-height: 1.2;">${attendee.companyEn}</div>
-                        </div>
+                <div class="attendee-card ${accentClass} rounded-2xl p-5 flex items-center gap-4">
+                    <div class="w-11 h-11 rounded-xl flex items-center justify-center text-sm font-black flex-shrink-0 border" style="background: ${colorScheme.bg}; color: ${colorScheme.color}; border-color: ${colorScheme.border};">
+                        ${String(index + 1).padStart(2, '0')}
                     </div>
-                    <div class="flex justify-between items-end pt-2 border-t" style="border-color: ${colorScheme.border};">
-                        <div class="font-bold text-base" style="color: ${colorScheme.color};">${attendee.name}</div>
-                        <div class="text-[11px] font-medium" style="color: #6b7280;">${attendee.title}</div>
+                    <div class="flex-1 min-w-0">
+                        <div class="font-bold text-base truncate" style="color: #1f2937;">${attendee.company}</div>
+                        <div class="text-[10px] font-medium uppercase tracking-wider truncate" style="color: #9ca3af;">${attendee.companyEn}</div>
+                    </div>
+                    <div class="text-right flex-shrink-0 ml-2">
+                        <div class="font-semibold" style="color: ${colorScheme.color};">${attendee.name}</div>
+                        <div class="text-[10px]" style="color: #9ca3af;">${attendee.title}</div>
                     </div>
                 </div>
             `;
             }).join('');
         }
 
-        // 초기화
-        document.addEventListener('DOMContentLoaded', function() {
-            renderAttendees();
-            
-            const btn = document.getElementById('reveal-btn');
-            if (btn) {
-                btn.addEventListener('click', toggleList);
-            }
-        });
+        renderAttendees();
     </script>
 </body>
 </html>
